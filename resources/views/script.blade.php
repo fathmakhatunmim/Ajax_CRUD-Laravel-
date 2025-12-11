@@ -14,8 +14,45 @@
     $(document).ready(function(){
         // alert();
   
-            $('#AddBook').on('click',function(){
-                consol.log("hi");
+            $(document).on('click','#AddBook',function(e){
+                //page ta jeno reload na hoi 
+                e.preventDefault();
+                let name = $('#name').val();
+                 let author = $('#author').val();
+                  let quantity = $('#quantity').val();
+                //   console.log(name+author+quantity);
+                 
+             var form = new FormData($('#addFrom')[0]);
+
+                // console.log(form);
+            $.ajax({
+            url:"{{route('create.create')}}",
+            method:"POST",            
+            data:form,
+
+            processData: false,
+//            jQuery FormData কে জোর করে string বানানোর চেষ্টা করবে →
+// result = data নষ্ট / empty / server এ পৌঁছাবে না
+            contentType: false,
+             // multipart/form-data পাঠাবে
+
+               success:function(res){
+
+               },
+               error:function(err){
+                let error = err.responseJSON;
+               $.each(error.errors, function(key, value){
+    $('.ErrorMassage').append('<span class="text-danger">'+value[0]+'</span><br>');
+});
+
+
+               }
+
+
+
+                });
+
+                
 
             });
 

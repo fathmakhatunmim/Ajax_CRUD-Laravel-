@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Ajax;
 
 use Illuminate\Http\Request;
 
@@ -17,13 +18,23 @@ class AjaxController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $request->validate([
     'name'     => 'required|string|max:255',
     'author'   => 'required|string',
     'quantity' => 'required|integer|min:1',
-]);
+        ],
+
+        [
+            'name.required'=>'Book name is required',   
+            'name.unique'=>'Book name already exists',
+            'author.required'=>'Author name is required',
+            'quantity.required'=>'Quantity name is required',
+
+        ]
+    
+    );
 
         Ajax::create([
 
