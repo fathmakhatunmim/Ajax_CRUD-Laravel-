@@ -37,6 +37,13 @@
              // multipart/form-data পাঠাবে
 
                success:function(res){
+                if(res.status=='success'){
+                    $('#exampleModal').modal('hide');
+                     $('#addFrom')[0].reset(); // form reset
+                    //  alert('Book added successfully!');
+                      swal("Success", res.status, "success");
+
+                }
 
                },
                error:function(err){

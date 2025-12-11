@@ -14,7 +14,7 @@
       <div class="modal-body">
 
    {{-- errormassage --}}
-   <div class="ErrorMassage">
+   <div class="ErrorMassage mb-3">
 
    </div>
 

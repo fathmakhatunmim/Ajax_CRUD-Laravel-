@@ -36,15 +36,18 @@ class AjaxController extends Controller
     
     );
 
-        Ajax::create([
+       $books= Ajax::create([
 
            'name'=> $request->name,
            'author'=> $request->author,
            'quantity'=> $request->quantity,
-           $request->save()
+        //    $books->save()
 
 
         ]);
+
+        return response()->json([
+        'status'=>'success']);
 
       
 
