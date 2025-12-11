@@ -10,10 +10,39 @@ class AjaxController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('create');
+        // return view('create');
+        $books = Ajax::select(['id','name','author','quantity']);
+
+        if($request->ajax()){
+            return DataTables::of($books)
+               ->addIndexColumn() 
+    ->addColumn('action', function($row) {
+        return '<a href="javascript:void(0)" class=" btn  btn-info btn-sm editButton" data-id="'.$row->id.'">Edit</a> 
+
+        <a href="javascript:void(0)" class="btn btn-danger btn-sm deleteButton" data-id="'.$row->id.'">Delete</a>';
+    })
+     
+    ->rawColumns(['action'])
+    ->make(true);
+
+
+        }
+        return view('create'); // Blade view
     }
+
+
+
+
+
+
+
+
+
+
+
+    
 
     /**
      * Show the form for creating a new resource.

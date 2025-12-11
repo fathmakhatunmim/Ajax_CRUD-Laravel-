@@ -1,6 +1,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> 
-  
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
           $.ajaxSetup({
@@ -13,9 +11,39 @@
   <script>
     $(document).ready(function(){
         // alert();
-  
+
+      //datatable a add kora
+             $table = $('#bookTable').DataTable({
+                 processing: true,
+                 serverSide: true,
+                 ajax:"{{route('create.index')}}",
+                
+               columns: [
+        { data: 'id'},
+        { data: 'name'},
+        {data: 'author'},
+        {data: 'quantity'},
+        { data: 'action', name: 'action', orderable: false, searchable: false },
+                 ]
+             });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             $(document).on('click','#AddBook',function(e){
-                //page ta jeno reload na hoi 
+
+            //page ta jeno reload na hoi 
                 e.preventDefault();
                 let name = $('#name').val();
                  let author = $('#author').val();

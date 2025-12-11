@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/create',[AjaxController::class,'index'])->name('create.index');
 
 Route::post('/create/book',[AjaxController::class,'create'])->name('create.create');
+
+
+Route::get('/create/show',[AjaxController::class,'show'])->name('create.show');

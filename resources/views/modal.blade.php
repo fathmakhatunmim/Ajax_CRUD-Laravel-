@@ -13,6 +13,10 @@
       </div>
       <div class="modal-body">
 
+ <input type="hidden" name="category_id" id="category_id">
+
+
+
    {{-- errormassage --}}
    <div class="ErrorMassage mb-3">
 
